@@ -1,0 +1,3 @@
+name_params TWITTER_ACCOUNT SAVED_TWEETS_ZIP_LOCATION
+
+unzip -c $SAVED_TWEETS_ZIP_LOCATION data/js/tweets/'*'|tr -d '\n'|sed 's/"id" : [0-9]*, *"created_at"/\n&\n/g'|grep '"id" : [0-9]*, *"created_at"'|sed 's/"id" : \([0-9]*\), *"created_at"/\1/' | shuf -n 10000 | sed "s#.*#https://twitter.com/${TWITTER_ACCOUNT}/statuses/&#"|while read i;do google-chrome $i; sleep 10; done
