@@ -1,4 +1,4 @@
-This is package twitter of Shinyshell.
+# Package "Shinyshell-twitter":
 
 This package contains the following functions:
 
